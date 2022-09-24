@@ -1,0 +1,342 @@
+﻿<Application x:Class="InfoLense.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:InfoLense"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             ShutdownMode="OnLastWindowClose"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:CustomColorTheme BaseTheme="Dark" PrimaryColor="#3d5a80"   SecondaryColor="#FFCF1550" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="MaterialDesignPaperDarker" Color="#FF26292C"/>
+            <SolidColorBrush x:Key="MaterialDesignBody" Color="#ffffffff"/>
+            <SolidColorBrush x:Key="MaterialDesignBodyLight" Color="#ffd0d1d2"/>
+            <Color x:Key="CoverColor" >#88501260</Color>
+            <SolidColorBrush x:Key="CoverBrush" >#88501260</SolidColorBrush>
+            <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FF222425"/>
+
+            <DrawingBrush x:Key="MiBrush" Viewbox="0,0,8,8" Viewport="0,0,4,4" ViewportUnits="Absolute" ViewboxUnits="Absolute" TileMode="Tile" Stretch="Uniform">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing   Brush="{DynamicResource MaterialDesignBodyLight}" Geometry="M0,0L0,4 4,4 4,0z"/>
+
+                        <GeometryDrawing Brush="{DynamicResource MaterialDesignBodyLight}" Geometry="M8,8L8,12 12,12 12,8z"/>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+                <!--DrawingBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </DrawingBrush.RelativeTransform>
+                </-->
+            </DrawingBrush>
+            <LinearGradientBrush x:Key="MiBrushForeground" EndPoint="1,0.75" StartPoint="0,0.25">
+                <GradientStop Color="#FFFFFF" Offset="0.3"/>
+                <GradientStop Color="#BBC5D7" Offset="0.75"/>
+                <GradientStop Color="#6D83A9" Offset="1"/>
+            </LinearGradientBrush>
+            <DrawingBrush x:Key="fromGrip" TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{StaticResource MiBrushForeground}" Geometry="M 0,0 L 2,0 L 2,2 L 0,2 z "/>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+            <DrawingBrush x:Key="MiBrushSmall" Viewbox="0,0,8,8" Viewport="0,0,4,4" ViewportUnits="Absolute" ViewboxUnits="Absolute" TileMode="Tile" Stretch="Uniform">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing   Brush="{DynamicResource MaterialDesignBodyLight}" Geometry="M0,0L0,2 2,2 2,0z"/>
+
+                        <GeometryDrawing Brush="{DynamicResource MaterialDesignBodyLight}" Geometry="M4,4L4,6 6,6 6,4z"/>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+                <!--DrawingBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </DrawingBrush.RelativeTransform>
+                </-->
+            </DrawingBrush>
+
+            <Pen x:Key="MiPen" Brush="{DynamicResource MaterialDesignBodyLight}">
+                
+            </Pen>
+            <DrawingBrush x:Key="MiLines" Viewbox="0,0,8,8" Viewport="0,0,4,4" ViewportUnits="Absolute" ViewboxUnits="Absolute" TileMode="Tile" Stretch="Uniform">
+                <DrawingBrush.Drawing >
+                    <DrawingGroup >
+                        <GeometryDrawing    Pen="{DynamicResource MiPen}" Geometry="M0,0L8,8z"/>
+                        <!--GeometryDrawing Brush="{DynamicResource MaterialDesignBodyLight}" Geometry="M4,4L4,6 6,6 6,4z"/-->
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+               
+            </DrawingBrush>
+
+
+
+
+
+
+            <Style x:Key="PopupBoxStyle1" TargetType="{x:Type materialDesign:PopupBox}">
+                <Setter Property="ToggleContent">
+                    <Setter.Value>
+                        <materialDesign:PackIcon Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type materialDesign:PopupBox}}}" Height="24" Kind="EllipsisVertical" Margin="4,0" Width="24"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignFlatButtonRipple}"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="PopupHorizontalOffset" Value="5"/>
+                <Setter Property="PopupVerticalOffset" Value="5"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="Padding" Value="0,8"/>
+                <Setter Property="Focusable" Value="True"/>
+                <Setter Property="PopupUniformCornerRadius" Value="2"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type materialDesign:PopupBox}">
+                            <ControlTemplate.Resources>
+                                <Style x:Key="{x:Type Separator}" TargetType="{x:Type Separator}">
+                                    <Style.BasedOn>
+                                        <Style TargetType="{x:Type Separator}">
+                                            <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="MinHeight" Value="1"/>
+                                            <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                            <Setter Property="Height" Value="16"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Separator}">
+                                                        <Rectangle Fill="{TemplateBinding Background}" HorizontalAlignment="Stretch" Height="1" VerticalAlignment="Center"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Style.BasedOn>
+                                </Style>
+                                <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                <materialDesign:Ripple ClipToBounds="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Focusable="False" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" materialDesign:RippleAssist.IsCentered="True" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ControlTemplate.Resources>
+                            <Grid>
+                                <ToggleButton x:Name="PART_Toggle" Cursor="Hand" ContentTemplate="{TemplateBinding ToggleContentTemplate}" Content="{TemplateBinding ToggleContent}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="{TemplateBinding IsTabStop}" IsChecked="{Binding IsPopupOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" TabIndex="{TemplateBinding TabIndex}" VerticalAlignment="Center" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderThickness="0" Padding="0">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <materialDesign:Ripple ClipToBounds="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Focusable="False" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" materialDesign:RippleAssist.IsCentered="True" Padding="{TemplateBinding Padding}" materialDesign:RippleAssist.IsDisabled="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <materialDesign:PopupEx x:Name="PART_Popup" AllowsTransparency="True" CustomPopupPlacementCallback="{Binding PopupPlacementMethod, RelativeSource={RelativeSource TemplatedParent}}" HorizontalOffset="{Binding PopupHorizontalOffset, RelativeSource={RelativeSource TemplatedParent}}" IsOpen="{Binding IsPopupOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="Fade" Placement="Custom" VerticalOffset="{Binding PopupVerticalOffset, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <materialDesign:Card Background="{TemplateBinding Background}" materialDesign:ShadowAssist.ShadowDepth="Depth3" ContentTemplate="{TemplateBinding PopupContentTemplate}" Content="{TemplateBinding PopupContent}" RenderOptions.ClearTypeHint="Enabled" Foreground="{DynamicResource MaterialDesignBody}" Margin="6" Padding="{TemplateBinding Padding}" UniformCornerRadius="{TemplateBinding PopupUniformCornerRadius}">
+                                        <materialDesign:Card.Resources>
+                                            <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+                                                <Style.BasedOn>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+                                                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                        <Setter Property="Padding" Value="16,0,16,16"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                                    <Grid>
+                                                                        <VisualStateManager.VisualStateGroups>
+                                                                            <VisualStateGroup x:Name="CommonStates">
+                                                                                <VisualStateGroup.Transitions>
+                                                                                    <VisualTransition From="{x:Null}" GeneratedDuration="0:0:0.3" Storyboard="{x:Null}" To="Normal">
+                                                                                        <VisualTransition.GeneratedEasingFunction>
+                                                                                            <CircleEase EasingMode="EaseOut"/>
+                                                                                        </VisualTransition.GeneratedEasingFunction>
+                                                                                    </VisualTransition>
+                                                                                </VisualStateGroup.Transitions>
+                                                                                <VisualState x:Name="Normal"/>
+                                                                                <VisualState x:Name="MouseOver">
+                                                                                    <Storyboard>
+                                                                                        <DoubleAnimation Duration="0" To="0.1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverBorder"/>
+                                                                                    </Storyboard>
+                                                                                </VisualState>
+                                                                                <VisualState x:Name="Disabled">
+                                                                                    <Storyboard>
+                                                                                        <DoubleAnimation Duration="0" To="0.48" Storyboard.TargetProperty="Opacity"/>
+                                                                                    </Storyboard>
+                                                                                </VisualState>
+                                                                            </VisualStateGroup>
+                                                                        </VisualStateManager.VisualStateGroups>
+                                                                        <Border x:Name="MouseOverBorder" Opacity="0">
+                                                                            <Border.Background>
+                                                                                <TemplateBinding Property="Foreground">
+                                                                                    <TemplateBinding.Converter>
+                                                                                        <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                                                                    </TemplateBinding.Converter>
+                                                                                </TemplateBinding>
+                                                                            </Border.Background>
+                                                                        </Border>
+                                                                        <materialDesign:Ripple ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Focusable="False" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" MinHeight="48" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                            <materialDesign:Ripple.Feedback>
+                                                                                <TemplateBinding Property="Foreground">
+                                                                                    <TemplateBinding.Converter>
+                                                                                        <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                                                                    </TemplateBinding.Converter>
+                                                                                </TemplateBinding>
+                                                                            </materialDesign:Ripple.Feedback>
+                                                                        </materialDesign:Ripple>
+                                                                    </Grid>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </Style.BasedOn>
+                                            </Style>
+                                        </materialDesign:Card.Resources>
+                                    </materialDesign:Card>
+                                </materialDesign:PopupEx>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.38"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+
+
+            <Style x:Key="GridSplitterStyleDots" TargetType="{x:Type Thumb}">
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignDivider}"/>
+
+                <Setter Property="Opacity" Value="0.56"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{DynamicResource MiBrush}"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard x:Name="MouseEnter_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="MouseExit_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.56"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="GridSplitterStyleArea" TargetType="{x:Type Thumb}">
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignDivider}"/>
+
+                <Setter Property="Opacity" Value="0.56"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard x:Name="MouseEnter_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="MouseExit_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.56"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="GridSplitterStyleLines" TargetType="{x:Type Thumb}">
+                <Setter Property="Background" Value="{DynamicResource MaterialDesignDivider}"/>
+
+                <Setter Property="Opacity" Value="0.56"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{DynamicResource MiLines}"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard x:Name="MouseEnter_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="MouseExit_BeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.56"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.56"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
