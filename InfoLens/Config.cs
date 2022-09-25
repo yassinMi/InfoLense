@@ -130,6 +130,14 @@ namespace Mi.Services
         }
 
 
+        private bool _RestorePosition=true;
+        public bool RestorePosition
+        {
+            set { _RestorePosition = value; notif(nameof(RestorePosition)); }
+            get { return _RestorePosition; }
+        }
+
+
         public enum DrawingBrushStyle { Dots=0,Area=1,Lines=2}
 
 

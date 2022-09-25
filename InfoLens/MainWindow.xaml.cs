@@ -80,6 +80,21 @@ namespace InfoLens
             // this.Effect  = new System.Windows.Media.Effects.BlurEffect() { Radius = 3 };
 
         }
+        /// <summary>
+        /// conditional saving procedure to config instance
+        /// </summary>
+        public void OnPosChanged()
+        {
+            if (Config.Instance.RestorePosition)
+            {
+                Config.Instance.c0Width = (int)c0.Width.Value;
+                Config.Instance.c1Width = (int)c1.Width.Value;
+
+                Config.Instance.r0Height = (int)r0.Height.Value;
+                Config.Instance.r1Height = (int)r1.Height.Value;
+            }
+            
+        }
 
         private void HndlbottomSplitterDragDelta(object sender, DragDeltaEventArgs e)
         {
@@ -90,6 +105,7 @@ namespace InfoLens
                 r1.Height = new GridLength(r1_new);
                 r2.Height = new GridLength(r2_new);
             }
+            OnPosChanged();
         }
 
         private void HndlRightSplitterDragDelta(object sender, DragDeltaEventArgs e)
@@ -101,6 +117,7 @@ namespace InfoLens
                 c1.Width = new GridLength(c1_new);
                 c2.Width = new GridLength(c2_new);
             }
+            OnPosChanged();
         }
 
         private void HndlLeftSplitterDragDelta(object sender, DragDeltaEventArgs e)
@@ -112,6 +129,7 @@ namespace InfoLens
                 c1.Width = new GridLength(c1_new);
                 c0.Width = new GridLength(c0_new);
             }
+            OnPosChanged();
         }
 
         private void HndlTopSplitterDragDelta(object sender, DragDeltaEventArgs e)
@@ -123,6 +141,7 @@ namespace InfoLens
                 r1.Height = new GridLength(r1_new);
                 r0.Height = new GridLength(r0_new);
             }
+            OnPosChanged();
         }
 
         private void HndleTopSplitterDragStarted(object sender, DragStartedEventArgs e)
@@ -147,6 +166,7 @@ namespace InfoLens
                 r1.Height = new GridLength(r1_new);
                 r2.Height = new GridLength(r2_new);
             }
+            OnPosChanged();
 
         }
 
@@ -157,6 +177,7 @@ namespace InfoLens
 
         private void ExecutedCloseWindowCommand(object sender, ExecutedRoutedEventArgs e)
         {
+            Config.Instance.Save();
             Close();
         }
 
@@ -195,6 +216,7 @@ namespace InfoLens
                 r0.Height = new GridLength(r0_new);
                 r2.Height = new GridLength(r2_new);
             }
+            OnPosChanged();
 
         }
 

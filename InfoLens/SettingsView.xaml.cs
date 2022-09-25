@@ -79,5 +79,25 @@ namespace InfoLens
         {
 
         }
+
+        private void where_you_left_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void where_you_left_Checked(object sender, RoutedEventArgs e)
+        {
+            Config.Instance.RestorePosition = true;
+            var mw= (App.Current.MainWindow as MainWindow);
+            if (mw != null)
+            {
+                mw.OnPosChanged();//to update the config, then the UI
+            }
+        }
+
+        private void use_current_pos_Click(object sender, RoutedEventArgs e)
+        {
+            Config.Instance.RestorePosition = false ;
+        }
     }
 }

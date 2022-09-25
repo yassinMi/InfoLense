@@ -83,6 +83,7 @@
     <Compile Include="ApplicationInfo.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EnumToDynamicStyle.cs" />
+    <Compile Include="InvertBooleanConverter.cs" />
     <Compile Include="RadioValueToIsCheckedConverter.cs" />
     <Compile Include="SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>

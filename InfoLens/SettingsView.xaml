@@ -19,6 +19,7 @@
             UseLayoutRounding="True"
              d:DesignHeight="490" d:DesignWidth="300">
     <UserControl.Resources>
+        <Converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
         <Converters:RadioValueToIsCheckedConverter x:Key="RadioValueToIsCheckedConverter"/>
         <ControlTemplate x:Key="RadioButtonChipStyleFillTypePicker" TargetType="{x:Type RadioButton}">
             <Grid ClipToBounds="True">
@@ -246,19 +247,28 @@
                     <ColumnDefinition SharedSizeGroup="key" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Start Position" VerticalAlignment="Top" Margin="6,0" />
+                <StackPanel  VerticalAlignment="Top" Margin="6,0">
+
+                    <TextBlock Text="Start Position" />
+
+                    <Button Visibility="Collapsed" x:Name="use_current_pos" ToolTip="Use the current position" HorizontalAlignment="Center" Margin="8" Width="24" Height="24" Padding="0" Foreground="{DynamicResource MaterialDesignBody}"  Style="{DynamicResource MaterialDesignIconForegroundButton}" Content="{custom:Material Kind=MoveResize, Width=16, Height=16}" Click="use_current_pos_Click"/>
+
+                </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Vertical">
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Label Width="28" VerticalAlignment="Center" Content="X"/>
-                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding c0Width}"/>
+                        <TextBox IsEnabled="{Binding RestorePosition, Converter={StaticResource InvertBooleanConverter}}" Width="40" VerticalAlignment="Center" Text="{Binding c0Width}"/>
                         <Label Margin="16 0 0 0" Width="28" VerticalAlignment="Center" Content="Y"/>
-                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding r0Height}"/>
+                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding r0Height}" IsEnabled="{Binding RestorePosition, Converter={StaticResource InvertBooleanConverter}}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Label Width="28" VerticalAlignment="Center" Content="W"/>
-                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding c1Width}"/>
+                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding c1Width}" IsEnabled="{Binding RestorePosition, Converter={StaticResource InvertBooleanConverter}}"/>
                         <Label Margin="16 0 0 0" Width="28" VerticalAlignment="Center" Content="H"/>
-                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding r1Height}"/>
+                        <TextBox Width="40" VerticalAlignment="Center" Text="{Binding r1Height}" IsEnabled="{Binding RestorePosition, Converter={StaticResource InvertBooleanConverter}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,8,0,4">
+                        <CheckBox IsChecked="{Binding RestorePosition}" x:Name="where_you_left"  ToolTip="Restores the position " Style="{StaticResource MaterialDesignLightCheckBox}"  VerticalAlignment="Center" Content="Where you left" Margin="0" Unchecked="where_you_left_Unchecked" Checked="where_you_left_Checked"/>
                     </StackPanel>
                 </StackPanel>
 

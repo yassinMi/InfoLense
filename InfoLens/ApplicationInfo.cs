@@ -31,7 +31,7 @@ namespace Mi.Common
         public static string APP_SHORT_DESCRIPTION { get; } = "Cover parts of the screen";
         public static string APP_VERSION_NOTE { get; } = "";
 
-        public static string APP_VERSION { get; } = "0.1.1";
+        public static string APP_VERSION { get; } = "0.1.2";
         public static string APP_VERSION_FRIENDLY { get; } = $"{APP_VERSION} " + (IsDev ? " [dev]" : "(29-08-2022)");
         public static string APP_DEVELOPER_NAME { get; set; } = "YassinMi";
         public static string APP_GUI_DESIGNER_NAME { get; set; } = "YassinMi";
