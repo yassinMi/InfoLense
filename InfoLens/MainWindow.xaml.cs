@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InfoLense
+namespace InfoLens
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

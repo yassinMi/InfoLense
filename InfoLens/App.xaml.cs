@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace InfoLense
+namespace InfoLens
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -19,8 +19,8 @@ namespace InfoLense
     public partial class App : Application
     {
 
-        private const string AppName = "InfoLense-10d2e625ce7b4e98079d4597";
-        private const string UniqueEventName = "InfoLense-2e0189630cf3914522e87657";
+        private const string AppName = "InfoLens-10d2e625ce7b4e98079d4597";
+        private const string UniqueEventName = "InfoLens-2e0189630cf3914522e87657";
         private EventWaitHandle eventWaitHandle;
 
         private Mutex _mutex;

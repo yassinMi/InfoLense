@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InfoLense"
+        xmlns:local="clr-namespace:InfoLens"
                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:custom="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:Converters="clr-namespace:Converters" x:Name="window" x:Class="InfoLense.MainWindow"
+        xmlns:Converters="clr-namespace:Converters" x:Name="window" x:Class="InfoLens.MainWindow"
         mc:Ignorable="d"
-        Title="Info Lense" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None" Background="Transparent" Topmost="True" UseLayoutRounding="True">
+        Title="Info Lens" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None" Background="Transparent" Topmost="True" UseLayoutRounding="True">
     <Window.Resources>
         <Converters:EnumToDynamicStyle x:Key="EnumToDynamicStyle"/>
         <Style x:Key="ThumbStyle1" TargetType="{x:Type Thumb}">

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoLense", "InfoLense\InfoLense.csproj", "{8A4E129F-CDB0-4E8E-A66A-2FA0DCFF7E32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoLens", "InfoLens\InfoLens.csproj", "{8A4E129F-CDB0-4E8E-A66A-2FA0DCFF7E32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

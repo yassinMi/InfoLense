@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InfoLense.Properties
+namespace InfoLens.Properties
 {
 
 

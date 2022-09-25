@@ -23,15 +23,15 @@ namespace Mi.Common
         }
 
         public static bool IsDev { get; set; } = false;
-        public static string APP_DEV_NAME = "InfoLense"; //used in creating app data directory and such
+        public static string APP_DEV_NAME = "InfoLens"; //used in creating app data directory and such
 
         //these fields are to be displayed to the user 
-        public static string APP_TITLE { get;  } = "InfoLense";
+        public static string APP_TITLE { get;  } = "InfoLens";
         public static string APP_SUB_TITLE { get;  } = "-todo-";
         public static string APP_SHORT_DESCRIPTION { get; } = "Cover parts of the screen";
         public static string APP_VERSION_NOTE { get; } = "";
 
-        public static string APP_VERSION { get; } = "0.1.0";
+        public static string APP_VERSION { get; } = "0.1.1";
         public static string APP_VERSION_FRIENDLY { get; } = $"{APP_VERSION} " + (IsDev ? " [dev]" : "(29-08-2022)");
         public static string APP_DEVELOPER_NAME { get; set; } = "YassinMi";
         public static string APP_GUI_DESIGNER_NAME { get; set; } = "YassinMi";
